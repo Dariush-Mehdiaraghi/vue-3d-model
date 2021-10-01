@@ -96,6 +96,12 @@ export default {
     cameraLookAt: {
       type: Object,
     },
+    focalLength: {
+      type: Number,
+      default() {
+        return 35;
+      },
+    },
     backgroundColor: {
       default: 0xffffff,
     },
@@ -253,6 +259,9 @@ export default {
     backgroundColor() {
       this.updateRenderer();
     },
+    focalLength() {
+      this.updateCamera();
+    },
   },
   methods: {
     onResize() {
@@ -339,6 +348,7 @@ export default {
 
       camera.aspect = this.size.width / this.size.height;
       camera.updateProjectionMatrix();
+      camera.setFocalLength(this.focalLength);
 
       if (!this.cameraLookAt && !this.cameraUp) {
         if (!object) return;

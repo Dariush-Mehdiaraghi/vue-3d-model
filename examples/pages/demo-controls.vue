@@ -5,6 +5,7 @@
         <button @click="toggle('pan')">{{ enablePan ? 'disable' : 'enable' }} translation</button>
         <button @click="toggle('zoom')">{{ enableZoom ? 'disable' : 'enable' }} zoom</button>
         <button @click="toggle('rotate')">{{ enableRotate ? 'disable' : 'enable' }} rotation</button>
+        <input type="range" v-model.number="focalLength" min="0" max="200" :val="focalLength">
       </div>
       <model-obj
         :backgroundAlpha="0"
@@ -15,6 +16,7 @@
           enableZoom,
           enableRotate,
         }"
+        :focalLength="focalLength"
       ></model-obj>
       <div class="example-loading" v-show="loading"></div>
     </template>
@@ -47,6 +49,7 @@ const code = `
             <button @click="toggle('pan')">{{ enablePan ? 'disable' : 'enable' }} translation</button>
             <button @click="toggle('zoom')">{{ enableZoom ? 'disable' : 'enable' }} zoom</button>
             <button @click="toggle('rotate')">{{ enableRotate ? 'disable' : 'enable' }} rotation</button>
+            <input type="range" v-model.number="focalLength" min="0" max="200" :val="focalLength">
         </div>
         <model-obj src="static/models/obj/tree.obj"></model-obj>
     </div>
@@ -61,6 +64,7 @@ const code = `
                 enablePan: true,
                 enableZoom: true,
                 enableRotate: true,
+                focalLength: 35,
             }
         },
         methods: {
@@ -84,6 +88,7 @@ const htmlCode = `
             <button @click="toggle('pan')">{{ enablePan ? 'disable' : 'enable' }} translation</button>
             <button @click="toggle('zoom')">{{ enableZoom ? 'disable' : 'enable' }} zoom</button>
             <button @click="toggle('rotate')">{{ enableRotate ? 'disable' : 'enable' }} rotation</button>
+            <input type="range" v-model.number="focalLength" min="0" max="200" :val="focalLength">
         </div>
         <model-obj src="static/models/obj/tree.obj"></model-obj>
     </div>
@@ -96,6 +101,7 @@ const htmlCode = `
                     enablePan: true,
                     enableZoom: true,
                     enableRotate: true,
+                    focalLength: 35,
                 }
             },
             methods: {
@@ -120,6 +126,7 @@ export default {
       enablePan: true,
       enableZoom: true,
       enableRotate: true,
+      focalLength: 35,
     };
   },
   methods: {
